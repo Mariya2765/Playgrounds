@@ -11,8 +11,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    // настройка тапбара (внизу). У меня 3 кнопки: карта, поиск, рейтин лучших(??) и личная инфа
+    // настройка тапбара (внизу). У меня 3 кнопки: карта, поиск, рейтинг лучших(??) и личная инфа
 // первое, что будет показываться
+    //карта
     func createMapNavigationController() -> UINavigationController {
         let mapNavigationController = UINavigationController(rootViewController: MapNavigationController())
         mapNavigationController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), tag: 0)
@@ -28,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     }
 
+    // поиск
     func createSearchViewController() -> UINavigationController {
         let searchViewController = UINavigationController(rootViewController: SearchViewController())
         searchViewController.tabBarItem = UITabBarItem(title: .none, image: UIImage(systemName: "magnifyingglass"), tag: 0)
@@ -41,6 +43,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
 
+    // личная инфа
+
+    func createPersonalViewController() -> UINavigationController {
+        let personalViewController = UINavigationController(rootViewController: PersonalViewController())
+        personalViewController.tabBarItem = UITabBarItem(title: .none, image: UIImage(systemName: "person"), tag: 0)
+
+        let appearancePersone = UINavigationBarAppearance()
+        appearancePersone.configureWithDefaultBackground()
+        personalViewController.navigationBar.standardAppearance = appearancePersone
+        personalViewController.navigationBar.scrollEdgeAppearance = appearancePersone
+
+        return personalViewController
+
+    }
+
     func createTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         let tabBarAppearance = UITabBarAppearance()
@@ -52,7 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //цвет выбранной кнопки вместо синего по умолчанию
 //        tabBarController.tabBar.tintColor = UIColor(red: 161/255.0, green: 22/255.0, blue: 204/255.0, alpha: 1.0)
 
-        tabBarController.viewControllers = [createMapNavigationController(), createSearchViewController()]
+        tabBarController.viewControllers = [createMapNavigationController(), createSearchViewController(), createPersonalViewController()]
 
         return tabBarController
     }
