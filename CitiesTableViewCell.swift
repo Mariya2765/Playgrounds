@@ -18,12 +18,13 @@ class CitiesTableViewCell: UITableViewCell {
 //        title.translatesAutoresizingMaskIntoConstraints = false
 //        return title
 //    }()
-
+    private var cityID: Int?
+    
     private let cityLabel: UILabel = {
         let text = UILabel()
         text.font = .systemFont(ofSize: 17, weight: .regular)
         text.textColor = .black
-        text.text = "Санкт-Петербург"
+//        text.text = "Санкт-Петербург"
         text.numberOfLines = 0
         text.translatesAutoresizingMaskIntoConstraints = false
 
@@ -58,5 +59,11 @@ class CitiesTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(city: City) {
+        self.cityID = city.cityID
+
+        cityLabel.text = city.textName
     }
 }

@@ -12,6 +12,8 @@ class CitieslViewController: UIViewController {
         static let reuseIdentifire = "cellID"
     }
 
+    private var citiesArray = CitiesProvider.getCity()
+
     private lazy var tableView: UITableView = {
 
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -47,7 +49,7 @@ class CitieslViewController: UIViewController {
 // UIDataSource
 extension CitieslViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return citiesArray.count
     }
 
 
