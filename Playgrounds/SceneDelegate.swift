@@ -13,26 +13,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // настройка тапбара (внизу). У меня 3 кнопки: карта, поиск, рейтинг лучших(??) и личная инфа
 // первое, что будет показываться
+//города
+
+    func createCitiesNavigationController() -> UINavigationController {
+        let citiesViewController = UINavigationController(rootViewController: CitieslViewController())
+        citiesViewController.tabBarItem = UITabBarItem(title: "Города", image: UIImage(systemName: "house.circle.fill"), tag: 0)
+
+        let appearanceCities = UINavigationBarAppearance()
+        appearanceCities.configureWithDefaultBackground()
+        citiesViewController.navigationBar.standardAppearance = appearanceCities
+        citiesViewController.navigationBar.scrollEdgeAppearance = appearanceCities
+        citiesViewController.navigationBar.prefersLargeTitles = true
+        citiesViewController.navigationBar.backgroundColor = .white
+
+        return citiesViewController
+
+    }
     //карта
     func createMapNavigationController() -> UINavigationController {
-        let mapNavigationController = UINavigationController(rootViewController: MapNavigationController())
-        mapNavigationController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), tag: 0)
+        let mapViewController = UINavigationController(rootViewController: MapViewController())
+        mapViewController.tabBarItem = UITabBarItem(title: "Карта", image: UIImage(systemName: "map"), tag: 0)
 
         let appearanceMap = UINavigationBarAppearance()
         appearanceMap.configureWithDefaultBackground()
-        mapNavigationController.navigationBar.standardAppearance = appearanceMap
-        mapNavigationController.navigationBar.scrollEdgeAppearance = appearanceMap
-        mapNavigationController.navigationBar.prefersLargeTitles = true
-        mapNavigationController.navigationBar.backgroundColor = .white
+        mapViewController.navigationBar.standardAppearance = appearanceMap
+        mapViewController.navigationBar.scrollEdgeAppearance = appearanceMap
+        mapViewController.navigationBar.prefersLargeTitles = true
+        mapViewController.navigationBar.backgroundColor = .white
 
-        return mapNavigationController
+        return mapViewController
 
     }
 
     // поиск
     func createSearchViewController() -> UINavigationController {
         let searchViewController = UINavigationController(rootViewController: SearchViewController())
-        searchViewController.tabBarItem = UITabBarItem(title: .none, image: UIImage(systemName: "magnifyingglass"), tag: 0)
+        searchViewController.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), tag: 0)
 
         let appearanceSearch = UINavigationBarAppearance()
         appearanceSearch.configureWithDefaultBackground()
@@ -47,7 +63,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func createPersonalViewController() -> UINavigationController {
         let personalViewController = UINavigationController(rootViewController: PersonalViewController())
-        personalViewController.tabBarItem = UITabBarItem(title: .none, image: UIImage(systemName: "person"), tag: 0)
+        personalViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 0)
 
         let appearancePersone = UINavigationBarAppearance()
         appearancePersone.configureWithDefaultBackground()
@@ -69,7 +85,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //цвет выбранной кнопки вместо синего по умолчанию
 //        tabBarController.tabBar.tintColor = UIColor(red: 161/255.0, green: 22/255.0, blue: 204/255.0, alpha: 1.0)
 
-        tabBarController.viewControllers = [createMapNavigationController(), createSearchViewController(), createPersonalViewController()]
+        tabBarController.viewControllers = [createCitiesNavigationController(), createMapNavigationController(), createSearchViewController(), createPersonalViewController()]
 
         return tabBarController
     }
