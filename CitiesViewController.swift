@@ -28,10 +28,21 @@ class CitieslViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Информация"
+        navigationItem.title = "Города"
         view.addSubview(tableView)
         self.tableView.register(CitiesTableViewCell.self, forCellReuseIdentifier: Constants.reuseIdentifire)
         addConstraintsOfTableView()
+
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addHabit))
+
+        // цвет кнопки добавления
+//        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 161/255.0, green: 22/255.0, blue: 204/255.0, alpha: 1.0)
+
+    }
+
+    //кнопка добавления города
+    @objc private func addHabit() {
 
     }
 
@@ -55,6 +66,9 @@ extension CitieslViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.reuseIdentifire, for: indexPath) as! CitiesTableViewCell
+        let city = citiesArray[indexPath.row]
+        cell.configure(city: city)
+        
 //        var content = cell.defaultContentConfiguration()
 //        content.text = "Прохождение этапов, за которые за 21 день вырабатывается привычка, подчиняется следующему алгоритму: "
 //        cell.contentConfiguration = content
