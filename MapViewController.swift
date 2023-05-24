@@ -47,23 +47,13 @@ class MapViewController: UIViewController {
     func checkLocationAnable() {
         if CLLocationManager.locationServicesEnabled() {
             setupManager()
-
+            checkAutorization()
         } else {
-            let alert = UIAlertController(title: "у вас выключена служба геолокации", message: "Хотите включить?", preferredStyle: .alert)
-            let settingsAction = UIAlertAction(title: "Настройки", style: .default) { (alert) in
-                if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
 
-            alert.addAction(settingsAction)
-            alert.addAction(cancelAction)
-
-            present(alert, animated: true, completion: nil)
-            }
+            shoeAlertLocation(title: "У вас выключена служба геолокации", message: "Хотите включить?", url: URL(string: "App-Prefs:root=LOCATION_SERVICES"))
 
         }
+    }
 
 
     func setupManager() {
@@ -71,8 +61,55 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
-}
+// разрешение на использование местоположения (координат)
+
+    func checkAutorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways:
+            break
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            locationManager.startUpdatingLocation()
+            break
+        case .denied:
+            shoeAlertLocation(title: "Запрещено использование геопозиции", message: "Хотите это изменить?", url: URL(string: UIApplication.openSettingsURLString))
+            break
+        case .restricted:
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+
+        }
+    }
+
+    func shoeAlertLocation(title: String, message: String?, url: URL?) {
+//        URL(string: "App-Prefs:root=LOCATION_SERVICES")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: "Настройки", style: .default) { (alert) in
+            if let url = url {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+
+        present(alert, animated: true, completion: nil)
+        }
+    }
+
 
 extension MapViewController: CLLocationManagerDelegate {
 
+   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last?.coordinate {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: 5000, longitudinalMeters: 5000)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkAutorization()
+    }
 }
