@@ -31,6 +31,7 @@ class CitieslViewController: UIViewController {
         navigationItem.title = "Города"
         view.addSubview(tableView)
         self.tableView.register(CitiesTableViewCell.self, forCellReuseIdentifier: Constants.reuseIdentifire)
+//        navigationItem.titleView?.isHidden = false
         addConstraintsOfTableView()
 
 

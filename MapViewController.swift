@@ -19,13 +19,18 @@ class MapViewController: UIViewController {
 
         return map
     }()
-//    let locationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.addSubview(mapView)
         setMapConstreints()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkLocationAnable()
     }
 
     func setMapConstreints() {
@@ -37,5 +42,37 @@ class MapViewController: UIViewController {
             mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
             ])
     }
+
+    //проверка включена ли служба отслеживания геопозиции, если выключена - выскакивает сообщение
+    func checkLocationAnable() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupManager()
+
+        } else {
+            let alert = UIAlertController(title: "у вас выключена служба геолокации", message: "Хотите включить?", preferredStyle: .alert)
+            let settingsAction = UIAlertAction(title: "Настройки", style: .default) { (alert) in
+                if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+
+            alert.addAction(settingsAction)
+            alert.addAction(cancelAction)
+
+            present(alert, animated: true, completion: nil)
+            }
+
+        }
+
+
+    func setupManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+
+}
+
+extension MapViewController: CLLocationManagerDelegate {
 
 }
