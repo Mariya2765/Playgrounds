@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
 
         return map
     }()
+
     let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
@@ -50,7 +51,7 @@ class MapViewController: UIViewController {
             checkAutorization()
         } else {
 
-            shoeAlertLocation(title: "У вас выключена служба геолокации", message: "Хотите включить?", url: URL(string: "App-Prefs:root=LOCATION_SERVICES"))
+            showAlertLocation(title: "У вас выключена служба геолокации", message: "Хотите включить?", url: URL(string: "App-Prefs:root=LOCATION_SERVICES"))
 
         }
     }
@@ -64,7 +65,7 @@ class MapViewController: UIViewController {
 // разрешение на использование местоположения (координат)
 
     func checkAutorization() {
-        switch CLLocationManager.authorizationStatus() {
+        switch locationManager.authorizationStatus {
         case .authorizedAlways:
             break
         case .authorizedWhenInUse:
@@ -72,17 +73,17 @@ class MapViewController: UIViewController {
             locationManager.startUpdatingLocation()
             break
         case .denied:
-            shoeAlertLocation(title: "Запрещено использование геопозиции", message: "Хотите это изменить?", url: URL(string: UIApplication.openSettingsURLString))
+            showAlertLocation(title: "Запрещено использование геопозиции", message: "Хотите это изменить?", url: URL(string: UIApplication.openSettingsURLString))
             break
         case .restricted:
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
-
+        default:  break
         }
     }
 
-    func shoeAlertLocation(title: String, message: String?, url: URL?) {
+    func showAlertLocation(title: String, message: String?, url: URL?) {
 //        URL(string: "App-Prefs:root=LOCATION_SERVICES")
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let settingsAction = UIAlertAction(title: "Настройки", style: .default) { (alert) in
