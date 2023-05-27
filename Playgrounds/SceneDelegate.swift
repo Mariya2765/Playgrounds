@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func createCitiesNavigationController() -> UINavigationController {
         let citiesViewController = UINavigationController(rootViewController: CitieslViewController())
-//        citiesViewController.tabBarItem = UITabBarItem(title: "Города", image: UIImage(systemName: "house.circle.fill"), tag: 0)
+        citiesViewController.tabBarItem = UITabBarItem(title: "Города", image: UIImage(systemName: "house.circle.fill"), tag: 0)
 //        citiesViewController.backgroundColor = UIColor(red: 0.98, green: 0.79, blue: 0.60, alpha: 0.50)
 
         let appearanceCities = UINavigationBarAppearance()

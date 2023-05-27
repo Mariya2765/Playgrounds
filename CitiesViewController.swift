@@ -33,7 +33,11 @@ class CitieslViewController: UIViewController {
         view.addSubview(tableView)
 
         self.tableView.register(CitiesTableViewCell.self, forCellReuseIdentifier: Constants.reuseIdentifire)
-//        navigationItem.titleView?.isHidden = false
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 161/255.0, green: 22/255.0, blue: 204/255.0, alpha: 1.0)
+
+//        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.67, green: 0.79, blue: 0.74, alpha: 1.00)
+
+        navigationItem.titleView?.isHidden = false
         addConstraintsOfTableView()
 
 
