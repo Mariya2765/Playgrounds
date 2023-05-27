@@ -27,6 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
 
+//    func applicationDidFinishLaunching(_ application: UIApplication) {
+//        let navigationBarAppearace = UINavigationBar.appearance()
+//        navigationBarAppearace.tintColor = UIColor(red: 0.98, green: 0.79, blue: 0.60, alpha: 0.50)
+//        navigationBarAppearace.barTintColor = UIColor(red: 0.98, green: 0.79, blue: 0.60, alpha: 0.50)
+
+
+
+//    }
+
 
 }
 

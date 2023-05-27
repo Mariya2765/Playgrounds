@@ -29,7 +29,9 @@ class CitieslViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Города"
+        
         view.addSubview(tableView)
+
         self.tableView.register(CitiesTableViewCell.self, forCellReuseIdentifier: Constants.reuseIdentifire)
 //        navigationItem.titleView?.isHidden = false
         addConstraintsOfTableView()
@@ -39,6 +41,7 @@ class CitieslViewController: UIViewController {
 
         // цвет кнопки добавления
 //        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 161/255.0, green: 22/255.0, blue: 204/255.0, alpha: 1.0)
+       
 
     }
 

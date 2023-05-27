@@ -27,6 +27,8 @@ class MapViewController: UIViewController {
 
         view.addSubview(mapView)
         setMapConstreints()
+
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     override func viewDidAppear(_ animated: Bool) {

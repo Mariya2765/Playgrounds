@@ -20,21 +20,21 @@ public class CitiesProvider {
         [
             City(
                 cityID: 0,
-                image: "St.Pitersburg",
+                image: "St.Pitersburg1",
                 textName: "Санкт-Петербург",
                 playgrounds: 20
             ),
 
             City(
                 cityID: 1,
-                image: "Dubrovo",
-                textName: "Дуброво",
+                image: "Moskow",
+                textName: "Москва",
                 playgrounds: 5
             ),
 
             City(
                 cityID: 2,
-                image: "Zadonsk",
+                image: "Zadonsk1",
                 textName: "Задонск",
                 playgrounds: 1
             )

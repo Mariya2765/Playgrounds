@@ -33,17 +33,26 @@ class CitiesTableViewCell: UITableViewCell {
     private let cityImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.backgroundColor = .black
         image.translatesAutoresizingMaskIntoConstraints = false
         image.isUserInteractionEnabled = true
         return image
     }()
 
+    private let colorView: UIView = {
+        let color = UIView()
+        color.backgroundColor = UIColor(red: 0.98, green: 0.79, blue: 0.60, alpha: 0.50)
+        color.translatesAutoresizingMaskIntoConstraints = false
+        color.layer.cornerRadius = 15
+        color.layer.masksToBounds = true
+        return color
+    }()
+
     //количество площадок
     private let playgroundsAmountLabel: UILabel = {
         let playgroundsLabel = UILabel()
-        playgroundsLabel.font = .systemFont(ofSize: 16)
+//        playgroundsLabel.font = .systemFont(ofSize: 16)
         playgroundsLabel.textColor = .systemGray
+        playgroundsLabel.font = .italicSystemFont(ofSize: 16)
         playgroundsLabel.translatesAutoresizingMaskIntoConstraints = false
         return playgroundsLabel
     }()
@@ -60,14 +69,24 @@ class CitiesTableViewCell: UITableViewCell {
 
     func setUpMyCell() {
 
-        contentView.addSubview(cityLabel)
-        contentView.addSubview(cityImageView)
-        contentView.addSubview(playgroundsAmountLabel)
+        contentView.addSubview(colorView)
+        colorView.addSubview(cityLabel)
+        colorView.addSubview(cityImageView)
+        colorView.addSubview(playgroundsAmountLabel)
+//        contentView.addSubview(cityLabel)
+//        contentView.addSubview(cityImageView)
+//        contentView.addSubview(playgroundsAmountLabel)
+//        contentView.backgroundColor = .blue
 
     }
 
     func addConstraints() {
         NSLayoutConstraint.activate([
+
+            colorView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            colorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            colorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            colorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
 
             cityImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             cityImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
@@ -95,6 +114,8 @@ class CitiesTableViewCell: UITableViewCell {
         cityLabel.text = city.textName
         cityImageView.image = UIImage(named: city.image)
         playgroundsAmountLabel.text = "Детских площадок: \(city.playgrounds)"
+
+
     }
 
     required init?(coder: NSCoder) {
