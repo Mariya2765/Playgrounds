@@ -18,6 +18,7 @@
 		4CBFA87F2A1A3B0500D2093B /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBFA87E2A1A3B0500D2093B /* CitiesViewController.swift */; };
 		4CBFA8812A1A42E100D2093B /* CitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBFA8802A1A42E100D2093B /* CitiesTableViewCell.swift */; };
 		4CBFA8832A1AA91C00D2093B /* CitiesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBFA8822A1AA91C00D2093B /* CitiesProvider.swift */; };
+		4CBFA8852A2684F100D2093B /* SearchTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBFA8842A2684F100D2093B /* SearchTableHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4CBFA87E2A1A3B0500D2093B /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
 		4CBFA8802A1A42E100D2093B /* CitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewCell.swift; sourceTree = "<group>"; };
 		4CBFA8822A1AA91C00D2093B /* CitiesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitiesProvider.swift; sourceTree = "<group>"; };
+		4CBFA8842A2684F100D2093B /* SearchTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 		4CBFA8582A12BD4900D2093B = {
 			isa = PBXGroup;
 			children = (
+				4CBFA8842A2684F100D2093B /* SearchTableHeaderView.swift */,
 				4CBFA8802A1A42E100D2093B /* CitiesTableViewCell.swift */,
 				4CBFA87E2A1A3B0500D2093B /* CitiesViewController.swift */,
 				4CBFA87C2A16AECE00D2093B /* PersonalViewController.swift */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CBFA8852A2684F100D2093B /* SearchTableHeaderView.swift in Sources */,
 				4CBFA8812A1A42E100D2093B /* CitiesTableViewCell.swift in Sources */,
 				4CBFA8692A12BD4A00D2093B /* ViewController.swift in Sources */,
 				4CBFA8652A12BD4A00D2093B /* AppDelegate.swift in Sources */,

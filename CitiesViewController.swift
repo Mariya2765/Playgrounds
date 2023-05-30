@@ -13,6 +13,7 @@ class CitieslViewController: UIViewController {
     }
 
     private var citiesArray = CitiesProvider.getCity()
+    private let headerView = SearchTableHeaderView()
 
     private lazy var tableView: UITableView = {
 
@@ -33,7 +34,19 @@ class CitieslViewController: UIViewController {
         view.addSubview(tableView)
 
         self.tableView.register(CitiesTableViewCell.self, forCellReuseIdentifier: Constants.reuseIdentifire)
-        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 161/255.0, green: 22/255.0, blue: 204/255.0, alpha: 1.0)
+
+
+        let navBar = self.navigationController!.navigationBar
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.configureWithOpaqueBackground()
+       
+        standardAppearance.backgroundColor = UIColor(red: 0.67, green: 0.79, blue: 0.74, alpha: 1.50)
+        navBar.standardAppearance = standardAppearance
+        navBar.scrollEdgeAppearance = standardAppearance
+
+
+
+//        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 161/255.0, green: 22/255.0, blue: 204/255.0, alpha: 1.0)
 
 //        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.67, green: 0.79, blue: 0.74, alpha: 1.00)
 
@@ -44,7 +57,7 @@ class CitieslViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addHabit))
 
         // цвет кнопки добавления
-//        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 161/255.0, green: 22/255.0, blue: 204/255.0, alpha: 1.0)
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.black
        
 
     }
@@ -67,8 +80,18 @@ class CitieslViewController: UIViewController {
 
 // UIDataSource
 extension CitieslViewController: UITableViewDataSource, UITableViewDelegate {
+
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else {
         return citiesArray.count
+    }
     }
 
 

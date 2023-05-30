@@ -88,19 +88,19 @@ class CitiesTableViewCell: UITableViewCell {
             colorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             colorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
 
-            cityImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            cityImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            cityImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            cityImageView.topAnchor.constraint(equalTo: colorView.topAnchor, constant: 20),
+            cityImageView.bottomAnchor.constraint(equalTo: colorView.bottomAnchor, constant: -20),
+            cityImageView.leadingAnchor.constraint(equalTo: colorView.leadingAnchor, constant: 20),
             cityImageView.heightAnchor.constraint(equalToConstant: 50),
             cityImageView.widthAnchor.constraint(equalTo: cityImageView.heightAnchor),
 
             cityLabel.topAnchor.constraint(equalTo:  cityImageView.topAnchor),
             cityLabel.leadingAnchor.constraint(equalTo: cityImageView.trailingAnchor, constant: 15),
-            cityLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            cityLabel.trailingAnchor.constraint(equalTo: colorView.trailingAnchor, constant: -15),
 //            cityLabel.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
 
 //            playgroundsAmountLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor),
-            playgroundsAmountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            playgroundsAmountLabel.trailingAnchor.constraint(equalTo: colorView.trailingAnchor, constant: -15),
             playgroundsAmountLabel.leadingAnchor.constraint(equalTo: cityImageView.trailingAnchor, constant: 15),
             playgroundsAmountLabel.bottomAnchor.constraint(equalTo: cityImageView.bottomAnchor)
         ])
