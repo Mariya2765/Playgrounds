@@ -90,7 +90,7 @@ extension CitieslViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             return 1
         } else {
-        return citiesArray.count
+            return citiesArray.count
     }
     }
 
@@ -107,6 +107,13 @@ extension CitieslViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return headerView
+        } else {
+            return .none
+        }
+    }
 
 
 
