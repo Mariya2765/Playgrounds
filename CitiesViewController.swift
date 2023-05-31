@@ -83,15 +83,15 @@ extension CitieslViewController: UITableViewDataSource, UITableViewDelegate {
 
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
+//        if section == 0 {
+//            return 1
+//        } else {
             return citiesArray.count
-    }
+//    }
     }
 
 

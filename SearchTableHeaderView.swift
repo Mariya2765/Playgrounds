@@ -13,8 +13,8 @@ class SearchTableHeaderView: UIView, UITextFieldDelegate {
 
     private let backgroundView: UIView = {
         let searchView = UIView()
-//        searchView.frame = CGRect(x: 0, y: 0, width: 200, height: 400)
-        searchView.backgroundColor = UIColor(red: 0.90, green: 0.47, blue: 0.05, alpha: 1.00)
+//        searchView.frame = CGRect(x: 0, y: 0, width: 1700, height: 800)
+        searchView.backgroundColor = UIColor(red: 0.67, green: 0.79, blue: 0.74, alpha: 1.00)
         searchView.translatesAutoresizingMaskIntoConstraints = false
         return searchView
     }()
@@ -22,15 +22,16 @@ class SearchTableHeaderView: UIView, UITextFieldDelegate {
 
     lazy var searchTextField: UITextField = {
         let searchTf = UITextField()
-        searchTf.backgroundColor = UIColor(red: 0.90, green: 0.47, blue: 0.05, alpha: 0.30)
+        searchTf.backgroundColor = UIColor(red: 0.44, green: 0.60, blue: 0.55, alpha: 0.70)
 //        searchTf.layer.borderColor = UIColor(red: 0.90, green: 0.47, blue: 0.05, alpha: 1.00)
+        searchTf.layer.borderColor = UIColor(red: 0.44, green: 0.60, blue: 0.55, alpha: 0.20).cgColor
         searchTf.layer.borderWidth = 0.5
         searchTf.layer.cornerRadius = 7
-        searchTf.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         searchTf.font = .systemFont(ofSize: 14)
         searchTf.textColor = .black
         searchTf.autocapitalizationType = .none
-        searchTf.placeholder = "magnifyingglass"
+        searchTf.placeholder = "    Поиск"
+//        citiesViewController.tabBarItem = UITabBarItem(title: "Города", image: UIImage(systemName: "house.circle.fill"), tag: 0)
         searchTf.textAlignment = .left
         searchTf.delegate = self
         searchTf.tag = 1
@@ -54,6 +55,7 @@ class SearchTableHeaderView: UIView, UITextFieldDelegate {
 
     // добавление элементов на View, scrollView, contentView
     private func addElements() {
+        
         addSubview(backgroundView)
         addSubview(searchTextField)
 
